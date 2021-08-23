@@ -1,0 +1,16 @@
+{
+  "name": "drug-app",
+  "version": "1.0.0",
+  "description": "This app is for drug CRUD operations",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
