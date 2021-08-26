@@ -1,0 +1,12 @@
+{
+    "name": "dev file",
+    "db": {
+        "host": "198.2.3.405",
+        "user": "root",
+        "database": "drug_db",
+        "password": "root@12345",
+        "waitForConnections": true,
+        "connectionLimit": 10,
+        "queueLimit": 0
+    }
+}

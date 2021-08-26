@@ -1,6 +1,0 @@
-{
-    "name" : "dev file",
-    "db" : {
-        "url" :"dev db url"
-    }
-}

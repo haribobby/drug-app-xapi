@@ -1,0 +1,12 @@
+{
+    "name": "default file",
+    "db": {
+        "host": "localhost",
+        "user": "root",
+        "database": "drug_db",
+        "password": "root@12345",
+        "waitForConnections": true,
+        "connectionLimit": 10,
+        "queueLimit": 0
+    }
+}
