@@ -1,5 +1,5 @@
 
-const pool = require('./mysqldatabase')
+const pool = require('./databaseconfig')
 
 const findAll = () => {
 
@@ -8,7 +8,7 @@ const findAll = () => {
 
 const findById = (id) => {
 
-    return pool.execute('SELECT * FROM drugs WHERE id=' + id);
+    return pool.execute('SELECT * FROM drugs WHERE id='+id);
 }
 
 const save = (drug) => {

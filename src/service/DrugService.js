@@ -13,8 +13,9 @@ const getAllDrugs = async (req, res) => {
 
 const getDrugById = async (req, res) => {
     try {
+
         const { id } = req.params;
-        const drugdata = queryeexecutor.findById(id);
+        const drugdata = await queryeexecutor.findById(id);
         res.send(JSON.stringify(drugdata[0]));
     } catch (error) {
         res.status(500).send(`there is some erorr while fetching drug id of ${id}`);

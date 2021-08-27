@@ -1,14 +1,15 @@
 const mysql = require('mysql2');
+const config = require('config');
 
 // Create the connection pool. The pool-specific settings are the defaults
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    database: 'drug_db',
-    password: 'root@12345',
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
+    host: config.get('db.host'),
+    user: config.get('db.user'),
+    database: config.get('db.database'),
+    password: config.get('db.password'),
+    waitForConnections: config.get('db.waitForConnections'),
+    connectionLimit: config.get('db.connectionLimit'),
+    queueLimit: config.get('db.queueLimit'),
 });
 
 module.exports = pool.promise();

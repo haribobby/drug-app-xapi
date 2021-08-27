@@ -1,3 +1,4 @@
+process.env.NODE_CONFIG_DIR = `${__dirname}/config`;
 const express = require('express')
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -26,9 +27,9 @@ app.use(logger);
 //router
 app.use('/api/drugs',drugroute);
 
-
 //
 console.log("name is .... "+config.get('name'));
+
 
 const PORT = process.env.PORT || 8000;
 
