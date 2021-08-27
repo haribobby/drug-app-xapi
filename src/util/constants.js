@@ -29,5 +29,4 @@ const druglist = [
       desc: 'Sildenafil is used to treat  function problems (impotence or erectile dysfunction-ED). In combination with sildenafil works',
     }
   ];
-
   module.exports = druglist;

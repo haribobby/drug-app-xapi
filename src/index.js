@@ -2,7 +2,7 @@ const express = require('express')
 const helmet = require('helmet');
 const morgan = require('morgan');
 const config = require('config');
-const logger = require('./logger');
+const logger = require('./middleware/logger');
 const drugroute = require('./router/drugroute');
 
 const app = express();
