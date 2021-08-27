@@ -1,4 +1,5 @@
-const pool = require('./mysqldatabasconfig')
+
+const pool = require('./databaseconfig')
 
 const findAll = () => {
 
@@ -7,12 +8,13 @@ const findAll = () => {
 
 const findById = (id) => {
 
-    return pool.execute('SELECT * FROM drugs WHERE id=' + id);
+    return pool.execute('SELECT * FROM drugs WHERE id='+id);
 }
 
 const save = (drug) => {
 
     return pool.execute('INSERT INTO drugs(title, amount, popular, description) VALUES(?,?,?,?)', [drug.title, drug.amount, drug.popular, drug.desc]);
+
 }
 
 module.exports = { findAll, findById, save };

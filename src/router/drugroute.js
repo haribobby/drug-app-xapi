@@ -1,21 +1,15 @@
 const express = require('express');
-const druglist = require('../util/constants');
-const queryeexecutor = require('../dao/queryexecutor')
-const DrugService = require('../service/drugservice')
+const DrugService = require('../service/DrugService');
 
 const drugroute = express.Router();
 
 //GET - drug all
-drugroute.get('/', DrugService.getAll);
+drugroute.get('/', DrugService.getAllDrugs);
 
 //READ get by id
-drugroute.get('/:id', DrugService.getDrugByID);
+drugroute.get('/:id',DrugService.getDrugById);
 
 //Creation
 drugroute.post('/', DrugService.saveDrug);
-
-//updation
-
-//deletion
 
 module.exports = drugroute;

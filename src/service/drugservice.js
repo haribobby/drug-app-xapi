@@ -1,48 +1,47 @@
 const queryeexecutor = require('../dao/queryexecutor')
+const Drug = require('../model/drug')
 
-
-const getAll = async (req, res, next) => {
-
-    try {
-        const data = await queryeexecutor.findAll();
-        res.send(JSON.stringify(data[0]));
-    }
-    catch (error) {
-        res.status(500).send("there is some erorr while fetching data...", error);
-    }
-    next();
-
-}
-const saveDrug = async (req, res, next) => {
-    const drugObj = req.body;
-    const drug = {
-        title: drugObj.title,
-        amount: drugObj.amount,
-        popular: drugObj.popular,
-        desc: drugObj.desc
-    }
+const getAllDrugs = async (req, res) => {
 
     try {
-        const data = await queryeexecutor.save(drug);
-        console.log("asfasdfasdfasd1");
-        res.send(JSON.stringify(data[0]));
-    } catch (err) {
+        //const drugdata = await queryeexecutor.findAll();
+        const drugdata = await Drug.findAll();
+        res.send(JSON.stringify(drugdata));
+    } catch (error) {
         res.status(500).send("there is some erorr while fetching data...");
     }
-    next();
 }
 
-const getDrugByID = async (req, res, next) => {
+const getDrugById = async (req, res) => {
+    try {
 
-    const { id } = req.params;
+        const { id } = req.params;
+        // const drugdata = await queryeexecutor.findById(id);
+        const drugdata = await Drug.findByPk(id);
+        console.log("drugdata"+JSON.stringify(drugdata))
+        res.send(JSON.stringify(drugdata));
+    } catch (error) {
+        res.status(500).send(`there is some erorr while fetching drug id of ${id}`);
+    }
+}
+
+const saveDrug = async (req, res) => {
 
     try {
-        const data = await queryeexecutor.findById(id)
-        res.send(JSON.stringify(data[0]));
-    } catch (err) {
-        res.status(500).send("there is some erorr while fetching data...");
+        const drugObj = req.body;
+
+        const drug = {
+            title: drugObj.title,
+            amount: drugObj.amount,
+            popular: drugObj.popular,
+            description: drugObj.description
+        }
+        // const drugdata = await queryeexecutor.save(drug);
+        const drugdata = await Drug.create(drug);
+        res.send(JSON.stringify(drugdata));
+    } catch (error) {
+        res.status(500).send(`there is some erorr while adding data...`+error);
     }
-    next();
 }
 
-module.exports = { getAll, saveDrug, getDrugByID };
+module.exports = { getAllDrugs, getDrugById, saveDrug };
