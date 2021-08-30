@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const config = require('config');
 const logger = require('./middleware/logger');
 const drugroute = require('./router/drugroute');
+const sequelize = require('./dao/databaseconfig');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use('/api/drugs',drugroute);
 console.log("name is .... "+config.get('name'));
 
 
+sequelize.sync();
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => { console.log(`Server is listening on port ${PORT}`) });
