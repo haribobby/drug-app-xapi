@@ -6,6 +6,7 @@ const config = require('config');
 const logger = require('./middleware/logger');
 const drugroute = require('./router/drugroute');
 const sequelize = require('./dao/databaseconfig');
+const mongoose = require('mongoose');
 
 
 const app = express();
@@ -33,6 +34,8 @@ app.use('/api/drugs',drugroute);
 console.log("name is .... "+config.get('name'));
 
 sequelize.sync().then(response => {}).catch(error => console.error(err));
+
+mongoose.connect('mongodb://localhost:27017/drug_db');
 
 const PORT = process.env.PORT || 8000;
 
