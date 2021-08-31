@@ -6,6 +6,7 @@ const config = require('config');
 const logger = require('./middleware/logger');
 const drugroute = require('./router/drugroute');
 const sequelize = require('./dao/databaseconfig');
+const mongoose = require('mongoose');
 
 const app = express();
 
@@ -32,7 +33,13 @@ app.use('/api/drugs',drugroute);
 console.log("name is .... "+config.get('name'));
 
 
-sequelize.sync();
+// sequelize.sync();
+
+
+const res = mongoose.connect('mongodb://localhost/drugs_db')
+            .then(res => console.log(res))
+            .catch(err => console.error(err));
+            
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => { console.log(`Server is listening on port ${PORT}`) });
