@@ -26,7 +26,7 @@ const getDrugById = async (req, res) => {
         console.log(id);
       //  const drugdata = await queryeexecutor.findById(id);
      // const drugdata = await Drug.findByPk(id);
-     const drugdata = await drug.findOne({ "_id" : ObjectId(id)});
+     const drugdata = await drug.findById({ "_id" : ObjectId(id)});
         res.send(JSON.stringify(drugdata));
     } catch (error) {
         res.status(500).send(`there is some erorr while fetching drug id of ${id}`);
